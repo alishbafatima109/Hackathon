@@ -678,6 +678,4 @@ app.get('/api/dashboard/analytics', async (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`✓ Smart Hospital Emergency API active at http://localhost:${PORT}`);
-});
+export default app;
