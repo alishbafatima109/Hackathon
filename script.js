@@ -2,7 +2,7 @@
 // CareRoute - FRONTEND + MUJTABA API
 // ==========================================
 
-const API_BASE_URL = "http://localhost:5001/api";
+const API_BASE_URL = "https://hackathon-backend-7k3bwj4vh-tech-titans-4354.vercel.app/api";
 
 
 // ==========================================
@@ -121,6 +121,14 @@ async function searchHospitals() {
 
     const resourceType =
         document.getElementById("resourceType").value;
+        const resourceMap = {
+    "ICU": "icuBeds",
+    "General Bed": "generalBeds",
+    "Ventilator": "ventilators"
+};
+
+const apiResourceType =
+    resourceMap[resourceType] || "icuBeds";
 
     const searchResults =
         document.getElementById("searchResults");
@@ -134,7 +142,7 @@ async function searchHospitals() {
     try {
 
         const response = await fetch(
-            `${API_BASE_URL}/hospitals?resourceType=${resourceType}`
+            `${API_BASE_URL}/hospitals?resourceType=${apiResourceType}`
         );
 
         const hospitals = await response.json();
